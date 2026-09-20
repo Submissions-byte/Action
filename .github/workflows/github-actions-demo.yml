@@ -1,18 +1,36 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Validate Part 1 Repository Structure
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
 jobs:
-  Explore-GitHub-Actions:
+  validate-docs-structure:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
-        uses: actions/checkout@v6
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+        uses: actions/checkout@v4
+
+      - name: Verify /docs folder exists
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          if [ ! -d "docs" ]; then
+            echo "❌ Error: /docs directory is missing!"
+            exit 1
+          fi
+          echo "✅ /docs directory found."
+
+      - name: Verify required files exist in /docs
+        run: |
+          echo "Listing files in /docs:"
+          ls -la docs/
+
+          # Verify SQL script existence
+          if ! ls docs/*.sql 1> /dev/null 2>&1; then
+            echo "❌ Error: No .sql file found in /docs!"
+            exit 1
+          fi
+
+          echo "✅ Required documentation files validated successfully."
