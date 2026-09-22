@@ -19,4 +19,4 @@ _CI/CD screenshot_
 <img width="1851" height="669" alt="Screenshot 2026-09-22 192837" src="https://github.com/user-attachments/assets/f7c6eed9-cddf-4651-9dfe-50e663847ebb" />
 
 
-YouTube video link:
+YouTube video link: https://youtu.be/Ig6fF_GR0XQ?si=N3OXE3MoJ3XwX3kt
