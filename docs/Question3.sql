@@ -1,5 +1,7 @@
-create database RaceDayDB;
+create database RaceDayDB; 
+Go
 use RaceDayDB;
+Go
 
 create table Organiser(
 OrganiserID integer identity(1,1) not null,
@@ -62,6 +64,7 @@ primary key (ResultID),
 foreign key (ParticipantID) references Participant(ParticipantID),
 foreign key (EventID) references Event(EventID),
 foreign key(OrganiserID) references Organiser(OrganiserID));
+Go
 
 INSERT INTO Organiser (Name) 
 VALUES ('Sarah Jenkins'), ('David Naidoo');
