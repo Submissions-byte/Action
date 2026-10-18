@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "c3p0Kwvo2HE=",
+  "dgSpecHash": "/t+5Kbeg1Ls=",
   "success": true,
   "projectFilePath": "C:\\Users\\boden\\source\\repos\\emkndn-prog6212-2026-prog6212-poe-submissions-byte\\RaceDay\\RaceDay\\RaceDay.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boden\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
-    "C:\\Users\\boden\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.9\\microsoft.aspnetcore.openapi.10.0.9.nupkg.sha512",
+    "C:\\Users\\boden\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.13\\microsoft.aspnetcore.openapi.10.0.13.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.11.0\\microsoft.codeanalysis.analyzers.3.11.0.nupkg.sha512",
@@ -36,7 +36,7 @@
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.identitymodel.protocols\\7.7.1\\microsoft.identitymodel.protocols.7.7.1.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\7.7.1\\microsoft.identitymodel.protocols.openidconnect.7.7.1.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.7.1\\microsoft.identitymodel.tokens.7.7.1.nupkg.sha512",
-    "C:\\Users\\boden\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
+    "C:\\Users\\boden\\.nuget\\packages\\microsoft.openapi\\2.12.2\\microsoft.openapi.2.12.2.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.visualstudio.solutionpersistence\\1.0.52\\microsoft.visualstudio.solutionpersistence.1.0.52.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
@@ -52,45 +52,8 @@
     "C:\\Users\\boden\\.nuget\\packages\\system.configuration.configurationmanager\\9.0.11\\system.configuration.configurationmanager.9.0.11.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.7.1\\system.identitymodel.tokens.jwt.7.7.1.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\system.memory.data\\8.0.1\\system.memory.data.8.0.1.nupkg.sha512",
-    "C:\\Users\\boden\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.11\\system.security.cryptography.pkcs.9.0.11.nupkg.sha512",
+    "C:\\Users\\boden\\.nuget\\packages\\system.security.cryptography.pkcs\\10.0.13\\system.security.cryptography.pkcs.10.0.13.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.11\\system.security.cryptography.protecteddata.9.0.11.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "C:\\Users\\boden\\source\\repos\\emkndn-prog6212-2026-prog6212-poe-submissions-byte\\RaceDay\\RaceDay\\RaceDay.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\boden\\source\\repos\\emkndn-prog6212-2026-prog6212-poe-submissions-byte\\RaceDay\\RaceDay\\RaceDay.csproj",
-      "libraryId": "Microsoft.OpenApi",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Pkcs' 9.0.11 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-2fmv-rv2c-59x7",
-      "projectPath": "C:\\Users\\boden\\source\\repos\\emkndn-prog6212-2026-prog6212-poe-submissions-byte\\RaceDay\\RaceDay\\RaceDay.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\boden\\source\\repos\\emkndn-prog6212-2026-prog6212-poe-submissions-byte\\RaceDay\\RaceDay\\RaceDay.csproj",
-      "libraryId": "System.Security.Cryptography.Pkcs",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Pkcs' 9.0.11 has a known high severity vulnerability, https://github.com/advisories/GHSA-846f-f764-76mx",
-      "projectPath": "C:\\Users\\boden\\source\\repos\\emkndn-prog6212-2026-prog6212-poe-submissions-byte\\RaceDay\\RaceDay\\RaceDay.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\boden\\source\\repos\\emkndn-prog6212-2026-prog6212-poe-submissions-byte\\RaceDay\\RaceDay\\RaceDay.csproj",
-      "libraryId": "System.Security.Cryptography.Pkcs",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    }
-  ]
+  "logs": []
 }
