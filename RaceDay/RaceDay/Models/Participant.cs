@@ -9,7 +9,7 @@ namespace RaceDay.Models
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
-        [Required, MaxLength(10)]
+        [Required, MaxLength(10), MinLength(10)]
         public string PhoneNumber { get; set; }
         [Required]
         public int Age { get; set; }
