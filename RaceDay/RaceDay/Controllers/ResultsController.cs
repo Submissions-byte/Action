@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RaceDay.Models;
 using RaceDay.Database;
+using Results = RaceDay.Models.Results;
 
 [Route("api/[controller]")]
 [ApiController]
