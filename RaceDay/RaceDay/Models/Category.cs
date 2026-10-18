@@ -13,6 +13,7 @@ namespace RaceDay.Models
         public string AgeRange { get; set; }
         [Required, MaxLength(50)]
         public string Distance {  get; set; }
+        [Required]
         public int EventID { get; set; }
         [ForeignKey(nameof(EventID))]
         public Event Event { get; set; }

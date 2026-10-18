@@ -18,7 +18,7 @@ namespace RaceDay.Models
         [Required]
         public decimal RouteLength { get; set; }
         //[ForeignKey(nameof(OrganiserID))]
-        
+        [Required]
         public int OrganiserID { get; set; }
         [ForeignKey(nameof(OrganiserID))]
         public Organiser Organiser { get; set; }
