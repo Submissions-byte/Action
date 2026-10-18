@@ -23,6 +23,6 @@ namespace RaceDay.Models
         [Required]
         public DateOnly EnrolmentDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
         [Required, MaxLength(50)]
-        public string Status { get; set; }
+        public string Status { get; set; } = "Pending";
     }
 }
