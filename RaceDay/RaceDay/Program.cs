@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using RaceDay.Database;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+/**
+ * Title: Authentication_API Program.cs source code
+ * Author: Yusra Adnan
+ * Date: 2021
+ * Code version: 1.0
+ * Availability: https://github.com/YusraAdnan/Authentication_API/blob/master/Authentication_API/Program.cs
+ **/
+
+builder.Services.AddDbContext<RaceDayDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
