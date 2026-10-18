@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RaceDay.Models
 {
-   // public enum Type { Run, Swim, Cycle }
+    // public enum Type { Run, Swim, Cycle }
+    [Index(nameof(ParticipantID), nameof(EventID), IsUnique = true)]
     public class Enrolment
     {
         [Key]
