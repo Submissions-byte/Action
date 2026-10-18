@@ -15,5 +15,30 @@ namespace RaceDay.Database
         public DbSet<Event> Event { get; set; }
         public DbSet<Enrolment> Enrolment { get; set; }
         public DbSet<Results> Results { get; set; }
-    }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            // Fix for SQL Server Error 1785 (Multiple Cascade Paths)
+            modelBuilder.Entity<Event>()
+        .HasOne(e => e.Organiser)
+        .WithMany()
+        .HasForeignKey(e => e.OrganiserID)
+        .OnDelete(DeleteBehavior.Restrict);
+
+            // Fix for Event -> Category -> Enrolment vs Event -> Enrolment conflict
+            modelBuilder.Entity<Enrolment>()
+                .HasOne(e => e.@event)
+                .WithMany()
+                .HasForeignKey(e => e.EventID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Enrolment>()
+                .HasOne(e => e.category)
+                .WithMany()
+                .HasForeignKey(e => e.CategoryID)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
+}
 }
