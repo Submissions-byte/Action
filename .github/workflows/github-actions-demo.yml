@@ -1,4 +1,4 @@
-name: Validate Part 1 Repository Structure
+name: Validate Repository Structure and Run Tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main", "master" ]
 
 jobs:
-  validate-docs-structure:
+  validate-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,7 +37,24 @@ jobs:
             exit 1
           fi
           if ! ls docs/*.png 1>/dev/null 2>&1; then
-          echo "Error: No .png file found in /docs for the Entity-Relationship Diagram."
-          exit 1
+            echo "Error: No .png file found in /docs for the Entity-Relationship Diagram."
+            exit 1
           fi
           echo "Required documentation files validated successfully."
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0' # Adjust if using 6.0, 7.0, etc.
+
+      - name: Restore Dependencies
+        working-directory: ./RaceDay
+        run: dotnet restore
+
+      - name: Build Project
+        working-directory: ./RaceDay
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Run Unit Tests
+        working-directory: ./RaceDay
+        run: dotnet test --no-build --verbosity normal
