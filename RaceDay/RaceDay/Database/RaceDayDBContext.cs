@@ -22,10 +22,10 @@ namespace RaceDay.Database
             base.OnModelCreating(modelBuilder);
             // Fix for SQL Server Error 1785 (Multiple Cascade Paths)
             modelBuilder.Entity<Event>()
-        .HasOne(e => e.Organiser)
-        .WithMany()
-        .HasForeignKey(e => e.OrganiserID)
-        .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(e => e.Organiser)
+                .WithMany()
+                .HasForeignKey(e => e.OrganiserID)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Fix for Event -> Category -> Enrolment vs Event -> Enrolment conflict
             modelBuilder.Entity<Enrolment>()
@@ -39,6 +39,10 @@ namespace RaceDay.Database
                 .WithMany()
                 .HasForeignKey(e => e.CategoryID)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Organiser>()
+                .HasIndex(o => o.Name)
+                .IsUnique();
         }
 }
 }

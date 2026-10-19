@@ -203,6 +203,9 @@ namespace RaceDay.Migrations
 
                     b.HasKey("OrganiserID");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Organiser");
                 });
 

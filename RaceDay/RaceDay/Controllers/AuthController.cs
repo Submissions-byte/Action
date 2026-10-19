@@ -49,7 +49,7 @@ namespace RaceDay.Controllers
             var newUser = new Organiser { Name = dto.Name };
             newUser.Password = Organiser_hasher.HashPassword(newUser, dto.Password);//using inbuilt hashing method hash the password
 
-            _dbContext.Users.Add(newUser); //store the hashed password to the db
+            _dbContext.Organiser.Add(newUser); //store the hashed password to the db
             _dbContext.SaveChanges();
             return Ok("Registered");
         }
@@ -59,7 +59,7 @@ namespace RaceDay.Controllers
         public async Task<IActionResult> OrganiserLogin(LoginDto dto)
         {
             //looks up the user by email. If nobody has the email return 401 status code
-            var user = _dbContext.Users.FirstOrDefault(u => u.Email == dto.Email);
+            var user = _dbContext.Organiser.FirstOrDefault(u => u.Name == dto.Name);
 
             //var user = _dbContext.Organiser.FirstOrDefault(u => u.UserID == user.UserID);
 
@@ -68,7 +68,7 @@ namespace RaceDay.Controllers
                 return Unauthorized();
             }
 
-            var result = _hasher.VerifyHashedPassword(user, user.PasswordHash, dto.Password);
+            var result = Organiser_hasher.VerifyHashedPassword(user, user.Password, dto.Password);
 
             if (result == PasswordVerificationResult.Failed)
             {
@@ -77,7 +77,7 @@ namespace RaceDay.Controllers
 
             var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Email),
+            new Claim(ClaimTypes.Name, user.Name),
             new Claim(ClaimTypes.Role, "Organiser")
         };
 
@@ -90,14 +90,14 @@ namespace RaceDay.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
 
             // return Ok("Logged in");
-            return Ok(new { Role = user.Role });
+            return Ok(new { Role = "Organiser" });
         }
 
         [HttpPost("participants/login")]
         public async Task<IActionResult> ParticipantLogin(LoginDto dto)
         {
             //looks up the user by email. If nobody has the email return 401 status code
-            var user = _dbContext.Users.FirstOrDefault(u => u.Email == dto.Email);
+            var user = _dbContext.Participant.FirstOrDefault(u => u.Name == dto.Name);
 
             //var user = _dbContext.Organiser.FirstOrDefault(u => u.UserID == user.UserID);
 
@@ -106,7 +106,7 @@ namespace RaceDay.Controllers
                 return Unauthorized();
             }
 
-            var result = _hasher.VerifyHashedPassword(user, user.PasswordHash, dto.Password);
+            var result = Participant_hasher.VerifyHashedPassword(user, user.Password, dto.Password);
 
             if (result == PasswordVerificationResult.Failed)
             {
@@ -115,7 +115,7 @@ namespace RaceDay.Controllers
 
             var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Email),
+            new Claim(ClaimTypes.Name, user.Name),
             new Claim(ClaimTypes.Role, "Participant")
         };
 
@@ -128,7 +128,7 @@ namespace RaceDay.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
 
             // return Ok("Logged in");
-            return Ok(new { Role = user.Role });
+            return Ok(new { Role = "Participant" });
         }
 
         [HttpPost("logout")] //clears the users cookie
