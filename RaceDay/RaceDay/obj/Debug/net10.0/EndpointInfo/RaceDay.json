@@ -1,17 +1,9 @@
 {
-  "openapi": "3.1.1",
+  "openapi": "3.0.4",
   "info": {
-    "title": "RaceDay | v1",
-    "version": "1.0.0"
+    "title": "RaceDay",
+    "version": "1.0"
   },
-  "servers": [
-    {
-      "url": "http://localhost:55941/"
-    },
-    {
-      "url": "https://localhost:44380/"
-    }
-  ],
   "paths": {
     "/api/Categories": {
       "get": {
@@ -71,8 +63,7 @@
                 "$ref": "#/components/schemas/Category"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -109,11 +100,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -151,11 +138,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -177,8 +160,7 @@
                 "$ref": "#/components/schemas/Category"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -196,11 +178,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -270,8 +248,7 @@
                 "$ref": "#/components/schemas/Enrolment"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -308,11 +285,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -350,11 +323,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -376,8 +345,7 @@
                 "$ref": "#/components/schemas/Enrolment"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -395,11 +363,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -469,8 +433,7 @@
                 "$ref": "#/components/schemas/Event"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -507,11 +470,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -549,11 +508,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -575,8 +530,7 @@
                 "$ref": "#/components/schemas/Event"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -594,11 +548,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -668,8 +618,7 @@
                 "$ref": "#/components/schemas/Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -706,11 +655,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -748,11 +693,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -774,8 +715,7 @@
                 "$ref": "#/components/schemas/Location"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -793,11 +733,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -867,8 +803,7 @@
                 "$ref": "#/components/schemas/Organiser"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -905,11 +840,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -947,11 +878,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -973,8 +900,7 @@
                 "$ref": "#/components/schemas/Organiser"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -992,11 +918,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -1066,8 +988,7 @@
                 "$ref": "#/components/schemas/Participant"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -1104,11 +1025,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -1146,11 +1063,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -1172,8 +1085,7 @@
                 "$ref": "#/components/schemas/Participant"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -1191,11 +1103,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -1265,8 +1173,7 @@
                 "$ref": "#/components/schemas/Results"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -1303,11 +1210,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -1345,11 +1248,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -1371,8 +1270,7 @@
                 "$ref": "#/components/schemas/Results"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -1390,11 +1288,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
+              "type": "integer",
               "format": "int32"
             }
           }
@@ -1411,92 +1305,72 @@
     "schemas": {
       "Category": {
         "required": [
-          "name",
           "ageRange",
           "distance",
-          "eventID"
+          "eventID",
+          "name"
         ],
         "type": "object",
         "properties": {
           "categoryID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "name": {
             "maxLength": 50,
+            "minLength": 1,
             "type": "string"
           },
           "ageRange": {
             "maxLength": 50,
+            "minLength": 1,
             "type": "string"
           },
           "distance": {
             "maxLength": 50,
+            "minLength": 1,
             "type": "string"
           },
           "eventID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "event": {
             "$ref": "#/components/schemas/Event"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Enrolment": {
         "required": [
-          "participantID",
-          "eventID",
           "categoryID",
           "enrolmentDate",
+          "eventID",
+          "participantID",
           "status"
         ],
         "type": "object",
         "properties": {
           "enrolmentID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "participantID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "participant": {
             "$ref": "#/components/schemas/Participant"
           },
           "eventID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "event": {
             "$ref": "#/components/schemas/Event"
           },
           "categoryID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "category": {
@@ -1508,36 +1382,36 @@
           },
           "status": {
             "maxLength": 50,
+            "minLength": 1,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Event": {
         "required": [
-          "title",
           "description",
-          "eventDate",
-          "startTime",
           "endTime",
+          "eventDate",
           "eventType",
           "locationID",
-          "organiserID"
+          "organiserID",
+          "startTime",
+          "title"
         ],
         "type": "object",
         "properties": {
           "eventID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "title": {
             "maxLength": 50,
+            "minLength": 1,
             "type": "string"
           },
           "description": {
+            "minLength": 1,
             "type": "string"
           },
           "eventDate": {
@@ -1557,87 +1431,74 @@
           },
           "bannerUrl": {
             "maxLength": 500,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "locationID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "location": {
             "$ref": "#/components/schemas/Location"
           },
           "organiserID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "organiser": {
             "$ref": "#/components/schemas/Organiser"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Location": {
         "required": [
-          "name",
-          "gpS_coordinates",
-          "startingLineLocation",
           "finishLineLocation",
+          "gpS_coordinates",
+          "name",
+          "organiserID",
           "routeLength",
-          "organiserID"
+          "startingLineLocation"
         ],
         "type": "object",
         "properties": {
           "locationID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "name": {
             "maxLength": 50,
+            "minLength": 1,
             "type": "string"
           },
           "gpS_coordinates": {
             "maxLength": 100,
+            "minLength": 1,
             "type": "string"
           },
           "startingLineLocation": {
             "maxLength": 20,
+            "minLength": 1,
             "type": "string"
           },
           "finishLineLocation": {
             "maxLength": 20,
+            "minLength": 1,
             "type": "string"
           },
           "routeLength": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "number",
-              "string"
-            ],
+            "type": "number",
             "format": "double"
           },
           "organiserID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "organiser": {
             "$ref": "#/components/schemas/Organiser"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Organiser": {
         "required": [
@@ -1647,42 +1508,38 @@
         "type": "object",
         "properties": {
           "organiserID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "name": {
             "maxLength": 50,
+            "minLength": 1,
             "type": "string"
           },
           "password": {
             "maxLength": 255,
+            "minLength": 1,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Participant": {
         "required": [
-          "name",
-          "phoneNumber",
           "age",
-          "password"
+          "name",
+          "password",
+          "phoneNumber"
         ],
         "type": "object",
         "properties": {
           "participantID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "name": {
             "maxLength": 50,
+            "minLength": 1,
             "type": "string"
           },
           "phoneNumber": {
@@ -1691,37 +1548,32 @@
             "type": "string"
           },
           "age": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "password": {
             "maxLength": 255,
+            "minLength": 1,
             "type": "string"
           },
           "avatarUrl": {
             "maxLength": 500,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Results": {
         "required": [
-          "finishingTime",
+          "enrolmentID",
           "finishingPosition",
-          "enrolmentID"
+          "finishingTime"
         ],
         "type": "object",
         "properties": {
           "resultID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "finishingTime": {
@@ -1729,28 +1581,27 @@
             "format": "time"
           },
           "finishingPosition": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "enrolmentID": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "enrolment": {
             "$ref": "#/components/schemas/Enrolment"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Type": {
-        "type": "integer"
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
       }
     }
   },

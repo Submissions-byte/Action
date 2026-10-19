@@ -165,3 +165,6 @@ C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\R
 C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\RaceDay\obj\Debug\net10.0\RaceDay.pdb
 C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\RaceDay\obj\Debug\net10.0\RaceDay.genruntimeconfig.cache
 C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\RaceDay\obj\Debug\net10.0\ref\RaceDay.dll
+C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\RaceDay\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\RaceDay\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\RaceDay\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
