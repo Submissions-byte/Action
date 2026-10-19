@@ -46,3 +46,4 @@ YouTube video link:
 
 _Reference List_:
 Adnan, Y., 2021. Authentication_API Program.cs source code [Source code]. Available at: https://github.com/YusraAdnan/Authentication_API/blob/master/Authentication_API/Program.cs [Accessed 18 October 2026].
+Web Dev Tutor, 2021. C# validate phone number. [online] Available at: https://www.webdevtutor.net/blog/c-sharp-validate-phone-number [Accessed 19 October 2026].
