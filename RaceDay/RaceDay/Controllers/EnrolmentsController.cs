@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RaceDay.Models;
 using RaceDay.Database;
-using Microsoft.AspNetCore.Authorization;
+using RaceDay.Models;
+using System.Security.Claims;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -20,6 +21,24 @@ public class EnrolmentsController : ControllerBase
     public async Task<ActionResult<IEnumerable<Enrolment>>> GetEnrolment()
     {
         return Ok(await _context.Enrolment.ToListAsync());
+    }
+
+    // GET: api/Enrolment
+    [Authorize(Roles = "Organiser")]
+    [HttpGet("my")]
+    public async Task<ActionResult<IEnumerable<Enrolment>>> GetMyEventEnrolment()
+    {
+        var ClaimID = User.FindFirst("OrganiserID")?.Value;
+        if (string.IsNullOrEmpty(ClaimID)) return Unauthorized(new { message = "Organiser identity could not be found in the session." });
+
+        int id = int.Parse(ClaimID);
+        //var organiser = await _context.Organiser.FindAsync(id);
+
+        var events = await _context.Event.Where(u=> u.OrganiserID==id).Select(u=>u.EventID).ToListAsync();
+
+        var output = await _context.Enrolment.Where(u => events.Contains(u.EventID)).ToListAsync();
+
+        return Ok(output);
     }
 
     // GET: api/Enrolment/5
@@ -41,29 +60,36 @@ public class EnrolmentsController : ControllerBase
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [Authorize(Roles = "Organiser")]
     [HttpPut("{enrolmentid}")]
-    public async Task<IActionResult> PutEnrolment(int? enrolmentid, Enrolment enrolment)
+    public async Task<IActionResult> PutEnrolment(int? enrolmentid,[FromBody] Enrolment enrolment)
     {
         if (enrolmentid != enrolment.EnrolmentID)
         {
             return BadRequest();
         }
-
-        _context.Entry(enrolment).State = EntityState.Modified;
-
         try
         {
-            await _context.SaveChangesAsync();
+            _context.Entry(enrolment).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EnrolmentExists(enrolmentid))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
-        catch (DbUpdateConcurrencyException)
+        catch (Exception ex)
         {
-            if (!EnrolmentExists(enrolmentid))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+            return Conflict(new { message = $"Invalid data format used for the Enrolment class/entity.\n{ex.Message}" });
         }
 
         return NoContent();
@@ -71,16 +97,25 @@ public class EnrolmentsController : ControllerBase
 
     // POST: api/Enrolment
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [Authorize(Roles = "Organiser")]
     [HttpPost]
-    public async Task<ActionResult<Enrolment>> PostEnrolment(Enrolment enrolment)
+    public async Task<ActionResult<Enrolment>> PostEnrolment([FromBody]Enrolment enrolment)
     {
-        _context.Enrolment.Add(enrolment);
-        await _context.SaveChangesAsync();
+        try
+        {
+            _context.Enrolment.Add(enrolment);
+            await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetEnrolment", new { enrolmentid = enrolment.EnrolmentID }, enrolment);
+            return CreatedAtAction("GetEnrolment", new { enrolmentid = enrolment.EnrolmentID }, enrolment);
+        }
+        catch (Exception ex)
+        {
+            return Conflict(new { message = $"Invalid data format used for the Enrolment class/entity.\n{ex.Message}" });
+        }
     }
 
     // DELETE: api/Enrolment/5
+    [Authorize(Roles ="Organiser")]
     [HttpDelete("{enrolmentid}")]
     public async Task<IActionResult> DeleteEnrolment(int? enrolmentid)
     {
@@ -90,14 +125,50 @@ public class EnrolmentsController : ControllerBase
             return NotFound();
         }
 
-        _context.Enrolment.Remove(enrolment);
-        await _context.SaveChangesAsync();
+        try
+        {
+            _context.Enrolment.Remove(enrolment);
+            await _context.SaveChangesAsync();
 
-        return NoContent();
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return Conflict(new { message = $"Failed to delete. The object may be in use in the results table.\n{ex.Message}" });
+        }
     }
 
     private bool EnrolmentExists(int? enrolmentid)
     {
         return _context.Enrolment.Any(e => e.EnrolmentID == enrolmentid);
+    }
+
+    [Authorize(Roles = "Participant")]
+    [HttpPost("ParticipantEnrolment")]
+    public async Task<ActionResult<Enrolment>> ParticipantEnrolmentByCategory([FromBody] EventCategoryDto enrolment)
+    {
+        var claimId = User.FindFirst("ParticipantID")?.Value;
+        if (string.IsNullOrEmpty(claimId)) return Unauthorized(new { message = "Participant identity could not be found in the session." });
+
+        int id = int.Parse(claimId);
+
+        var output = new Enrolment
+        {
+            ParticipantID = id,
+            EnrolmentDate = DateOnly.FromDateTime(DateTime.Now),
+            EventID = enrolment.EventID,
+            CategoryID = enrolment.CategoryID
+        };
+        try
+        {
+            _context.Enrolment.Add(output);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetEnrolment", new { enrolmentid = output.EnrolmentID }, output);
+        }
+        catch (Exception ex)
+        {
+            return Conflict(new { message = $"Invalid data format used for the Enrolment class/entity.\n{ex.Message}" });
+        }
     }
 }
