@@ -74,7 +74,7 @@ public class CategoriesController : ControllerBase
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [Authorize(Roles ="Organiser")]
     [HttpPost("{eventID}/create")]
-    public async Task<ActionResult<Category>> PostCategory(int? eventID,[FromBody] Category category)
+    public async Task<IActionResult> PostCategory(int? eventID,[FromBody] Category category)
     {
         if (eventID != category.EventID)
         {

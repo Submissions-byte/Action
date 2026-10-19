@@ -1,5 +1,131 @@
 [
   {
+    "ContainingType": "RaceDay.Controllers.AuthController",
+    "Method": "Logout",
+    "RelativePath": "api/auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Controllers.AuthController",
+    "Method": "OrganiserLogin",
+    "RelativePath": "api/auth/organisers/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RaceDay.Models.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Controllers.AuthController",
+    "Method": "GetOrganiserProfile",
+    "RelativePath": "api/auth/organisers/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Controllers.AuthController",
+    "Method": "UpdateOrganiserProfile",
+    "RelativePath": "api/auth/organisers/me",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RaceDay.Models.OrganiserRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Controllers.AuthController",
+    "Method": "OrganiserRegister",
+    "RelativePath": "api/auth/organisers/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RaceDay.Models.OrganiserRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Controllers.AuthController",
+    "Method": "ParticipantLogin",
+    "RelativePath": "api/auth/participants/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RaceDay.Models.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Controllers.AuthController",
+    "Method": "GetParticipantProfile",
+    "RelativePath": "api/auth/participants/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Controllers.AuthController",
+    "Method": "UpdateParticipantProfile",
+    "RelativePath": "api/auth/participants/me",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RaceDay.Models.ParticipantRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Controllers.AuthController",
+    "Method": "ParticipantRegister",
+    "RelativePath": "api/auth/participants/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RaceDay.Models.ParticipantRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CategoriesController",
     "Method": "GetCategory",
     "RelativePath": "api/Categories",
@@ -10,32 +136,6 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[RaceDay.Models.Category, RaceDay, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CategoriesController",
-    "Method": "PostCategory",
-    "RelativePath": "api/Categories",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "category",
-        "Type": "RaceDay.Models.Category",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "RaceDay.Models.Category",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -107,6 +207,37 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CategoriesController",
+    "Method": "PostCategory",
+    "RelativePath": "api/Categories/{eventID}/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eventID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      },
+      {
+        "Name": "category",
+        "Type": "RaceDay.Models.Category",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "RaceDay.Models.Category",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "EnrolmentsController",
@@ -218,6 +349,52 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "EnrolmentsController",
+    "Method": "GetMyEventEnrolment",
+    "RelativePath": "api/Enrolments/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RaceDay.Models.Enrolment, RaceDay, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EnrolmentsController",
+    "Method": "ParticipantEnrolmentByCategory",
+    "RelativePath": "api/Enrolments/ParticipantEnrolment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrolment",
+        "Type": "RaceDay.Models.EventCategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "RaceDay.Models.Enrolment",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "EventsController",
     "Method": "GetEvent",
     "RelativePath": "api/Events",
@@ -291,8 +468,40 @@
   },
   {
     "ContainingType": "EventsController",
+    "Method": "DeleteEvent",
+    "RelativePath": "api/Events/{eventid}/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eventid",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventsController",
+    "Method": "Enrolments",
+    "RelativePath": "api/Events/{eventid}/enrolments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eventid",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventsController",
     "Method": "PutEvent",
-    "RelativePath": "api/Events/{eventid}",
+    "RelativePath": "api/Events/{eventid}/update",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -305,22 +514,6 @@
       {
         "Name": "event",
         "Type": "RaceDay.Models.Event",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EventsController",
-    "Method": "DeleteEvent",
-    "RelativePath": "api/Events/{eventid}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "eventid",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
     ],
