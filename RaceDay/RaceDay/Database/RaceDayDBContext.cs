@@ -43,6 +43,10 @@ namespace RaceDay.Database
             modelBuilder.Entity<Organiser>()
                 .HasIndex(o => o.Name)
                 .IsUnique();
+
+            modelBuilder.Entity<Participant>()
+                .HasIndex(o => o.Name)
+                .IsUnique();
         }
 }
 }

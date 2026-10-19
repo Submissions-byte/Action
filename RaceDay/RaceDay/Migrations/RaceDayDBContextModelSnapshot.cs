@@ -242,6 +242,9 @@ namespace RaceDay.Migrations
 
                     b.HasKey("ParticipantID");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Participant");
                 });
 
