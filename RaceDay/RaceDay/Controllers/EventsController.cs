@@ -111,10 +111,16 @@ public class EventsController : ControllerBase
             return NotFound();
         }
 
-        _context.Event.Remove(@event);
-        await _context.SaveChangesAsync();
+        try
+        {
+            _context.Event.Remove(@event);
+            await _context.SaveChangesAsync();
 
-        return NoContent();
+            return NoContent();
+        }catch(Exception ex)
+        {
+            return Conflict(new { message = $"Failed to delete. The object may be in use in other tables.\n{ex.Message}" });
+        }
     }
 
     [Authorize(Roles = "Organiser")]
