@@ -12,11 +12,20 @@ _Description of the two roles_
 
 ****Part 2****
 
+_Overview_
+
+The RaceDay API provides functions which support all of the database interactions which enable Event-Organisers to create and manage events, categories, and participant results, while allowing Participants to browse upcoming events, enter events, track their personal performance history, and prepare for race day using live weather and route information.
+
+_Roles_
+
+• Organiser - can create, edit, and delete events, manage event categories, capture participant results, and view all event enrolments. 
+• Participant - can create an account, browse events, enter an event by selecting a category, view their own enrolments, and track their personal results.
+
 _CI/CD screenshot_
 
   Here is a screenshot of my Workflow's execution on this repository:
 
-<img width="1889" height="564" alt="Screenshot 2026-09-22 192812" src="https://github.com/user-attachments/assets/9d05021d-1f68-4950-9a9b-bf0f4043e058" />
+<img width="1916" height="1077" alt="Screenshot 2026-10-19 185106" src="https://github.com/user-attachments/assets/f46cad2f-9e8c-4d6d-832a-9cb471ec76a4" />
 
 _Prerequisites_
 
