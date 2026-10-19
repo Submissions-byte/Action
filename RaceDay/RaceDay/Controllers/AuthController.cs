@@ -26,7 +26,7 @@ namespace RaceDay.Controllers
         }
 
         [HttpPost("particpants/register")]
-        public IActionResult Register(RegisterDto dto) //uses the data object for register (email, password and role)
+        public IActionResult ParticipantRegister(ParticipantRegisterDto dto) //uses the data object for register (email, password and role)
         {
             //actual User object is created using the user input from RegisterDto
             var newUser = new Participant { Name = dto.Name, Age = dto.Age, AvatarUrl= dto.AvatarUrl, PhoneNumber = dto.PhoneNumber};
@@ -43,7 +43,7 @@ namespace RaceDay.Controllers
         }
 
         [HttpPost("organisers/register")]
-        public IActionResult Register(RegisterDto dto) //uses the data object for register (email, password and role)
+        public IActionResult OrganiserRegister(ParticipantRegisterDto dto) //uses the data object for register (email, password and role)
         {
             //actual User object is created using the user input from RegisterDto
             var newUser = new Organiser { Name = dto.Name };
@@ -56,7 +56,7 @@ namespace RaceDay.Controllers
 
 
         [HttpPost("organisers/login")]
-        public async Task<IActionResult> Login(LoginDto dto)
+        public async Task<IActionResult> OrganiserLogin(LoginDto dto)
         {
             //looks up the user by email. If nobody has the email return 401 status code
             var user = _dbContext.Users.FirstOrDefault(u => u.Email == dto.Email);
@@ -94,7 +94,7 @@ namespace RaceDay.Controllers
         }
 
         [HttpPost("participants/login")]
-        public async Task<IActionResult> Login(LoginDto dto)
+        public async Task<IActionResult> ParticipantLogin(LoginDto dto)
         {
             //looks up the user by email. If nobody has the email return 401 status code
             var user = _dbContext.Users.FirstOrDefault(u => u.Email == dto.Email);
