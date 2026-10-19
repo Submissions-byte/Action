@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RaceDay.Models;
 using RaceDay.Database;
+using Microsoft.AspNetCore.Authorization;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -17,7 +18,7 @@ public class EventsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Event>>> GetEvent()
     {
-        return await _context.Event.ToListAsync();
+        return Ok(await _context.Event.ToListAsync());
     }
 
     // GET: api/Event/5
@@ -31,35 +32,51 @@ public class EventsController : ControllerBase
             return NotFound();
         }
 
-        return @event;
+        return Ok(@event);
     }
 
     // PUT: api/Event/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPut("{eventid}")]
-    public async Task<IActionResult> PutEvent(int? eventid, Event @event)
+    [Authorize(Roles = "Organiser")]
+    [HttpPut("{eventid}/update")]
+    public async Task<IActionResult> PutEvent(int? eventid, [FromBody] Event @event)
     {
         if (eventid != @event.EventID)
         {
-            return BadRequest();
+            return BadRequest(new {message = "Event Id mismatch."});
         }
 
-        _context.Entry(@event).State = EntityState.Modified;
+        var existing = await _context.Event.FindAsync(eventid);
+
+        if (existing == null)
+        {
+            return Conflict(new { message = $"Event not found." });
+        }
 
         try
         {
-            await _context.SaveChangesAsync();
+            _context.Entry(@event).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EventExists(eventid))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
-        catch (DbUpdateConcurrencyException)
+        catch (Exception ex)
         {
-            if (!EventExists(eventid))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+            return Conflict(new { message = $"Invalid data format used for the Event class/entity.\n{ex.Message}" });
         }
 
         return NoContent();
@@ -67,17 +84,25 @@ public class EventsController : ControllerBase
 
     // POST: api/Event
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [Authorize(Roles = "Organiser")]
     [HttpPost]
     public async Task<ActionResult<Event>> PostEvent(Event @event)
     {
-        _context.Event.Add(@event);
-        await _context.SaveChangesAsync();
+        try
+        {
+            _context.Event.Add(@event);
+            await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetEvent", new { eventid = @event.EventID }, @event);
+            return CreatedAtAction("GetEvent", new { eventid = @event.EventID }, @event);
+        }catch(Exception ex)
+        {
+            return Conflict(new { message = $"Invalid data format used for the Event class/entity.\n{ex.Message}" });
+        }
     }
 
     // DELETE: api/Event/5
-    [HttpDelete("{eventid}")]
+    [Authorize(Roles ="Organiser")]
+    [HttpDelete("{eventid}/delete")]
     public async Task<IActionResult> DeleteEvent(int? eventid)
     {
         var @event = await _context.Event.FindAsync(eventid);
@@ -91,6 +116,55 @@ public class EventsController : ControllerBase
 
         return NoContent();
     }
+
+    [Authorize(Roles = "Organiser")]
+    [HttpGet("{eventid}/enrolments")]
+    public async Task<IActionResult> Enrolments(int? eventid)
+    {
+        var @event = await _context.Event.FindAsync(eventid);
+        if (@event == null)
+        {
+            return NotFound();
+        }
+
+        var enrolments = await _context.Enrolment.Where(u => u.EventID == eventid).ToListAsync();
+
+        return Ok(enrolments);
+    }
+
+    //[Authorize(Roles = "Participant")]
+    //[HttpPost("{eventid}/enrolments")]
+    //public async Task<IActionResult> EnterEnrolments(int? eventid)
+    //{
+    //    var @event = await _context.Event.FindAsync(eventid);
+    //    if (@event == null)
+    //    {
+    //        return NotFound();
+    //    }
+
+    //    var enrolments = await _context.Enrolment.Where(u => u.EventID == eventid).ToListAsync();
+
+    //    return Ok(enrolments);
+    //}
+
+    //[Authorize(Roles = "Organiser")]
+    //[HttpPost("{eventid}/results")]
+    //public async Task<IActionResult> Results(int? eventid)
+    //{
+    //    var @event = await _context.Results.FindAsync(eventid);
+    //    if (@event == null)
+    //    {
+    //        return NotFound();
+    //    }
+
+    //    var results = await _context.Results.Where(u => u.EventID == eventid).ToListAsync();
+
+    //    await _context.SaveChangesAsync();
+
+    //    return NoContent();
+    //}
+
+    //Results are posted through the results api
 
     private bool EventExists(int? eventid)
     {

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RaceDay.Models;
 using RaceDay.Database;
+using Microsoft.AspNetCore.Authorization;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -14,13 +15,15 @@ public class EnrolmentsController : ControllerBase
     }
 
     // GET: api/Enrolment
+    [Authorize(Roles ="Organiser")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Enrolment>>> GetEnrolment()
     {
-        return await _context.Enrolment.ToListAsync();
+        return Ok(await _context.Enrolment.ToListAsync());
     }
 
     // GET: api/Enrolment/5
+    [Authorize(Roles = "Organiser")]
     [HttpGet("{enrolmentid}")]
     public async Task<ActionResult<Enrolment>> GetEnrolment(int enrolmentid)
     {
@@ -31,11 +34,12 @@ public class EnrolmentsController : ControllerBase
             return NotFound();
         }
 
-        return enrolment;
+        return Ok(enrolment);
     }
 
     // PUT: api/Enrolment/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [Authorize(Roles = "Organiser")]
     [HttpPut("{enrolmentid}")]
     public async Task<IActionResult> PutEnrolment(int? enrolmentid, Enrolment enrolment)
     {
