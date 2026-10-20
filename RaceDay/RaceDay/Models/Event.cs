@@ -25,10 +25,10 @@ namespace RaceDay.Models
         [Required]
         public int LocationID { get; set; }
         [ForeignKey(nameof(LocationID))]
-        public Location Location { get; set; }
+        public Location? Location { get; set; }
         [Required]
         public int OrganiserID { get; set; }
         [ForeignKey(nameof(OrganiserID))]
-        public Organiser Organiser { get; set; }
+        public Organiser? Organiser { get; set; }
     }
 }

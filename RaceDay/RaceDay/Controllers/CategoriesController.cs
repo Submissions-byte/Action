@@ -18,7 +18,7 @@ public class CategoriesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Category>>> GetCategory()
     {
-        return await _context.Category.ToListAsync();
+        return Ok(await _context.Category.ToListAsync());
     }
 
     // GET: api/Category/5
@@ -32,7 +32,7 @@ public class CategoriesController : ControllerBase
             return NotFound();
         }
 
-        return category;
+        return Ok(category);
     }
 
     // PUT: api/Category/5

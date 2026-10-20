@@ -43,51 +43,60 @@ public class EventsController : ControllerBase
     {
         if (eventid != @event.EventID)
         {
-            return BadRequest(new {message = "Event Id mismatch."});
+            return BadRequest(new { message = "Event Id mismatch." });
         }
 
         var existing = await _context.Event.FindAsync(eventid);
 
         if (existing == null)
         {
-            return Conflict(new { message = $"Event not found." });
+            return NotFound(new { message = $"Event not found." });
         }
 
         try
         {
-            _context.Entry(@event).State = EntityState.Modified;
+            // Update properties on the tracked entity instead of replacing the state entry
+            existing.Title = @event.Title;
+            existing.EventDate = @event.EventDate;
+            existing.StartTime = @event.StartTime;
+            existing.EndTime = @event.EndTime;
+            existing.EventType = @event.EventType;
+            existing.LocationID = @event.LocationID;
+            existing.OrganiserID = @event.OrganiserID;
+            existing.BannerUrl = @event.BannerUrl;
+            existing.Description = @event.Description;
 
-            try
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!EventExists(eventid))
             {
-                await _context.SaveChangesAsync();
-                return Ok();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!EventExists(eventid))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
         }
         catch (Exception ex)
         {
             return Conflict(new { message = $"Invalid data format used for the Event class/entity.\n{ex.Message}" });
         }
-
-        return NoContent();
     }
 
     // POST: api/Event
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [Authorize(Roles = "Organiser")]
     [HttpPost]
-    public async Task<ActionResult<Event>> PostEvent(Event @event)
+    public async Task<ActionResult<Event>> PostEvent([FromBody]Event @event)
     {
+        var claimId = User.FindFirst("OrganiserID")?.Value;
+        if (string.IsNullOrEmpty(claimId)) return Unauthorized(new { message = "Organiser identity could not be found in the session." });
+
+        int id = int.Parse(claimId);
+        @event.OrganiserID = id;
         try
         {
             _context.Event.Add(@event);

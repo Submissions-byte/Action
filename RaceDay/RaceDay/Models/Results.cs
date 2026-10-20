@@ -14,6 +14,6 @@ namespace RaceDay.Models
         [Required]
         public int EnrolmentID { get; set; }
         [ForeignKey(nameof(EnrolmentID))]
-        public Enrolment enrolment { get; set; }
+        public Enrolment? enrolment { get; set; }
     }
 }

@@ -125,9 +125,9 @@ public class ResultsController : ControllerBase
 
         var results = await _context.Results.Where(u => u.enrolment.ParticipantID == id).ToListAsync();
 
-        if (results == null)
+        if (results.Count==0)
         {
-            return NotFound();
+            return NotFound("You have no recorded results.");
         }
 
         return Ok(results);

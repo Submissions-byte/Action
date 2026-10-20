@@ -16,6 +16,6 @@ namespace RaceDay.Models
         [Required]
         public int EventID { get; set; }
         [ForeignKey(nameof(EventID))]
-        public Event Event { get; set; }
+        public Event? Event { get; set; }
     }
 }
