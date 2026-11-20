@@ -614,3 +614,7 @@ C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\R
 C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\API Auth\bin\Debug\net10.0\Microsoft.AspNetCore.Mvc.Testing.dll
 C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\API Auth\bin\Debug\net10.0\Microsoft.AspNetCore.TestHost.dll
 C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\API Auth\obj\Debug\net10.0\MvcTestingAppManifest.json
+C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\API Auth\bin\Debug\net10.0\Apache.Arrow.dll
+C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\API Auth\bin\Debug\net10.0\Azure.Storage.Blobs.dll
+C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\API Auth\bin\Debug\net10.0\Azure.Storage.Common.dll
+C:\Users\boden\source\repos\emkndn-prog6212-2026-prog6212-poe-submissions-byte\RaceDay\API Auth\bin\Debug\net10.0\System.IO.Hashing.dll

@@ -413,9 +413,44 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "event",
-        "Type": "RaceDay.Models.Event",
-        "IsRequired": true
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EventDate",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "StartTime",
+        "Type": "System.TimeOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "EndTime",
+        "Type": "System.TimeOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "EventType",
+        "Type": "RaceDay.Models.Type",
+        "IsRequired": false
+      },
+      {
+        "Name": "LocationID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "BannerFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [

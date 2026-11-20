@@ -718,19 +718,76 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Event"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Event"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Event"
+                "required": [
+                  "Description",
+                  "EndTime",
+                  "EventDate",
+                  "EventType",
+                  "LocationID",
+                  "StartTime",
+                  "Title"
+                ],
+                "type": "object",
+                "properties": {
+                  "Title": {
+                    "maxLength": 50,
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "EventDate": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "StartTime": {
+                    "type": "string",
+                    "format": "time"
+                  },
+                  "EndTime": {
+                    "type": "string",
+                    "format": "time"
+                  },
+                  "EventType": {
+                    "$ref": "#/components/schemas/Type"
+                  },
+                  "LocationID": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "BannerFile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Title": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "EventDate": {
+                  "style": "form"
+                },
+                "StartTime": {
+                  "style": "form"
+                },
+                "EndTime": {
+                  "style": "form"
+                },
+                "EventType": {
+                  "style": "form"
+                },
+                "LocationID": {
+                  "style": "form"
+                },
+                "BannerFile": {
+                  "style": "form"
+                }
               }
             }
           }

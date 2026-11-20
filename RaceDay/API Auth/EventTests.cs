@@ -9,6 +9,7 @@ using RaceDay;
 using RaceDay.Database;
 using RaceDay.Models;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -205,26 +206,36 @@ namespace API_Auth
             LoginDto unit = new LoginDto { Name = "John Doe", Password = "Password" };
             await _client.PostAsJsonAsync("/api/auth/organisers/login", unit);
 
-            Event @event = new Event
-            {
-                EventID = 2,
-                Title = "City Marathon",
-                EventDate = new DateOnly(2026, 11, 15),
-                StartTime = new TimeOnly(6, 0),
-                EndTime = new TimeOnly(12, 0),
-                EventType = 0,
-                LocationID = 1,
-                OrganiserID = 2,
-                BannerUrl = "banner/example.com",
-                Description = "pretty good"
-            };
-            var response = await _client.PostAsJsonAsync("api/Events", @event);
+            using var form = new MultipartFormDataContent();
+            form.Add(new StringContent("City Marathon"), "Title");
+            form.Add(new StringContent("pretty good"), "Description");
+            form.Add(new StringContent("2026-11-15"), "EventDate");
+            form.Add(new StringContent("06:00:00"), "StartTime");
+            form.Add(new StringContent("12:00:00"), "EndTime");
+            form.Add(new StringContent("0"), "EventType"); 
+            form.Add(new StringContent("1"), "LocationID");
+
+            var imageBytes = new byte[] { 1, 2, 3, 4 };
+            var fileContent = new ByteArrayContent(imageBytes);
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+            form.Add(fileContent, "BannerFile", "banner.png");
+
+            var response = await _client.PostAsync("api/Events", form);
             Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
 
-            response = await _client.GetAsync("api/Events/2");
-            var update = JsonSerializer.Deserialize<Event>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            var created = JsonSerializer.Deserialize<Event>(
+                await response.Content.ReadAsStringAsync(),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-            Assert.AreEqual(@event.Title, update.Title);
+            Assert.IsNotNull(created);
+            Assert.AreEqual("City Marathon", created.Title);
+
+            response = await _client.GetAsync($"api/Events/{created.EventID}");
+            var fetched = JsonSerializer.Deserialize<Event>(
+                await response.Content.ReadAsStringAsync(),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            Assert.AreEqual("City Marathon", fetched!.Title);
             await _client.PostAsync("/api/auth/logout", null);
         }
 

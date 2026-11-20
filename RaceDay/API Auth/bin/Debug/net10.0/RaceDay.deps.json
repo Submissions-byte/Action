@@ -10,6 +10,7 @@
         "dependencies": {
           "Azure.Core": "1.63.0",
           "Azure.Identity": "1.21.0",
+          "Azure.Storage.Blobs": "12.30.1",
           "Microsoft.AspNetCore.OpenApi": "10.0.13",
           "Microsoft.EntityFrameworkCore": "10.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.13",
@@ -18,6 +19,14 @@
         },
         "runtime": {
           "RaceDay.dll": {}
+        }
+      },
+      "Apache.Arrow/22.1.0": {
+        "runtime": {
+          "lib/net8.0/Apache.Arrow.dll": {
+            "assemblyVersion": "22.1.0.0",
+            "fileVersion": "22.1.0.0"
+          }
         }
       },
       "Azure.Core/1.63.0": {
@@ -43,6 +52,31 @@
           "lib/net10.0/Azure.Identity.dll": {
             "assemblyVersion": "1.21.0.0",
             "fileVersion": "1.2100.26.21009"
+          }
+        }
+      },
+      "Azure.Storage.Blobs/12.30.1": {
+        "dependencies": {
+          "Apache.Arrow": "22.1.0",
+          "Azure.Core": "1.63.0",
+          "Azure.Storage.Common": "12.29.0"
+        },
+        "runtime": {
+          "lib/net10.0/Azure.Storage.Blobs.dll": {
+            "assemblyVersion": "12.30.1.0",
+            "fileVersion": "12.3000.126.50503"
+          }
+        }
+      },
+      "Azure.Storage.Common/12.29.0": {
+        "dependencies": {
+          "Azure.Core": "1.63.0",
+          "System.IO.Hashing": "10.0.9"
+        },
+        "runtime": {
+          "lib/net10.0/Azure.Storage.Common.dll": {
+            "assemblyVersion": "12.29.0.0",
+            "fileVersion": "12.2900.26.48003"
           }
         }
       },
@@ -842,6 +876,14 @@
           }
         }
       },
+      "System.IO.Hashing/10.0.9": {
+        "runtime": {
+          "lib/net10.0/System.IO.Hashing.dll": {
+            "assemblyVersion": "10.0.0.9",
+            "fileVersion": "10.0.926.27113"
+          }
+        }
+      },
       "System.Memory.Data/10.0.10": {
         "runtime": {
           "lib/net10.0/System.Memory.Data.dll": {
@@ -866,6 +908,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Apache.Arrow/22.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mTdHWGsNCWpKyQxqyNcSS+q4BtBTSOUfhdG+Lwo6eAOznCLSwrZQ5VKtDG2G8VrUp1ul4DwWHefoBS1umjO/VQ==",
+      "path": "apache.arrow/22.1.0",
+      "hashPath": "apache.arrow.22.1.0.nupkg.sha512"
+    },
     "Azure.Core/1.63.0": {
       "type": "package",
       "serviceable": true,
@@ -879,6 +928,20 @@
       "sha512": "sha512-GeFv8sGwRKvDKwI2WFy8r0mhmlxEVZg24Sit2NogTjiSO8RVjllWM65OT6e1sKjOvG8V74y7hAbaELUUPjZQSw==",
       "path": "azure.identity/1.21.0",
       "hashPath": "azure.identity.1.21.0.nupkg.sha512"
+    },
+    "Azure.Storage.Blobs/12.30.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ywPqtDHLH5MY0Cp/wfLQgqhHOuJmD+bYVJawjXudtaQr9aJB+9orhk8oE6hHPy5s8H5bzq2q/mDkESf8w1rzBg==",
+      "path": "azure.storage.blobs/12.30.1",
+      "hashPath": "azure.storage.blobs.12.30.1.nupkg.sha512"
+    },
+    "Azure.Storage.Common/12.29.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0VqPcAinzXFJDAELqC+VPFUL6AaU1mmIpDAHarr7DVw3zcJrlo4k3Xc3TCTVBkDgY6YUOjJ00Fd9ZB9En5H2Jg==",
+      "path": "azure.storage.common/12.29.0",
+      "hashPath": "azure.storage.common.12.29.0.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
@@ -1208,6 +1271,13 @@
       "sha512": "sha512-rQkO1YbAjLwnDJSMpRhRtrc6XwIcEOcUvoEcge+evurpzSZM3UNK+MZfD3sKyTlYsvknZ6eJjSBfnmXqwOsT9Q==",
       "path": "system.identitymodel.tokens.jwt/7.7.1",
       "hashPath": "system.identitymodel.tokens.jwt.7.7.1.nupkg.sha512"
+    },
+    "System.IO.Hashing/10.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vixglGnKEexAJDeIRhyayZYzxyrgK1K9GU3K/zRZVwDbaDcMkSqj4WDHoVmQMNfsdUtLALfNSJw6mBIpdxie4A==",
+      "path": "system.io.hashing/10.0.9",
+      "hashPath": "system.io.hashing.10.0.9.nupkg.sha512"
     },
     "System.Memory.Data/10.0.10": {
       "type": "package",

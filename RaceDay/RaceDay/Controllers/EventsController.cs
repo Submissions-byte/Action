@@ -1,17 +1,21 @@
+using Azure.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RaceDay.Models;
 using RaceDay.Database;
-using Microsoft.AspNetCore.Authorization;
+using RaceDay.Models;
+using RaceDay.Services;
 
 [Route("api/[controller]")]
 [ApiController]
 public class EventsController : ControllerBase
 {
     private readonly RaceDayDBContext _context;
-    public EventsController(RaceDayDBContext context)
+    private readonly BlobService _blobService;
+    public EventsController(RaceDayDBContext context, BlobService blobService)
     {
         _context = context;
+        _blobService = blobService;
     }
 
     // GET: api/Event
@@ -90,15 +94,36 @@ public class EventsController : ControllerBase
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [Authorize(Roles = "Organiser")]
     [HttpPost]
-    public async Task<ActionResult<Event>> PostEvent([FromBody]Event @event)
+    public async Task<ActionResult<Event>> PostEvent([FromForm]EventDto @eventDto)
     {
         var claimId = User.FindFirst("OrganiserID")?.Value;
         if (string.IsNullOrEmpty(claimId)) return Unauthorized(new { message = "Organiser identity could not be found in the session." });
 
         int id = int.Parse(claimId);
-        @event.OrganiserID = id;
+
         try
         {
+            string? bannerUrl=null;
+            if (@eventDto.BannerFile != null && @eventDto.BannerFile.Length > 0)
+            {
+                //save the file to blob and get that file name in ImageURL
+                bannerUrl = await _blobService.UploadFileAsync(@eventDto.BannerFile);
+
+            }
+
+            var @event = new Event
+            {
+                OrganiserID = id,
+                Title = @eventDto.Title,
+                Description = @eventDto.Description,
+                EventDate = @eventDto.EventDate,
+                StartTime = @eventDto.StartTime,
+                EndTime = @eventDto.EndTime,
+                EventType = @eventDto.EventType,
+                LocationID = @eventDto.LocationID,
+                BannerUrl = bannerUrl ?? string.Empty
+            };
+
             _context.Event.Add(@event);
             await _context.SaveChangesAsync();
 

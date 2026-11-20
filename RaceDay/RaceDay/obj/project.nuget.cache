@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "zOZ8QgSA3Hg=",
+  "dgSpecHash": "ekRbjPVNCFc=",
   "success": true,
   "projectFilePath": "C:\\Users\\boden\\source\\repos\\emkndn-prog6212-2026-prog6212-poe-submissions-byte\\RaceDay\\RaceDay\\RaceDay.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\boden\\.nuget\\packages\\apache.arrow\\22.1.0\\apache.arrow.22.1.0.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\azure.core\\1.63.0\\azure.core.1.63.0.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\azure.identity\\1.21.0\\azure.identity.1.21.0.nupkg.sha512",
+    "C:\\Users\\boden\\.nuget\\packages\\azure.storage.blobs\\12.30.1\\azure.storage.blobs.12.30.1.nupkg.sha512",
+    "C:\\Users\\boden\\.nuget\\packages\\azure.storage.common\\12.29.0\\azure.storage.common.12.29.0.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.13\\microsoft.aspnetcore.openapi.10.0.13.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\10.0.10\\microsoft.bcl.asyncinterfaces.10.0.10.nupkg.sha512",
@@ -56,6 +59,7 @@
     "C:\\Users\\boden\\.nuget\\packages\\system.composition.typedparts\\9.0.0\\system.composition.typedparts.9.0.0.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\system.configuration.configurationmanager\\9.0.11\\system.configuration.configurationmanager.9.0.11.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.7.1\\system.identitymodel.tokens.jwt.7.7.1.nupkg.sha512",
+    "C:\\Users\\boden\\.nuget\\packages\\system.io.hashing\\10.0.9\\system.io.hashing.10.0.9.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\system.memory.data\\10.0.10\\system.memory.data.10.0.10.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\system.security.cryptography.pkcs\\10.0.13\\system.security.cryptography.pkcs.10.0.13.nupkg.sha512",
     "C:\\Users\\boden\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.11\\system.security.cryptography.protecteddata.9.0.11.nupkg.sha512"
