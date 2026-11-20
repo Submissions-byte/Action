@@ -42,7 +42,12 @@ _Setup_
   6. Select Build > Build Solution in the top menu.
   7. Select Test > Test Explorer in the top menu, then click the Run All Tests button (the play arrow).
 
-YouTube video link: 
+YouTube video link: https://youtu.be/CY3h3Lk-YJ0?si=mbAv6dwOuCOwc4CZ
+
+_*Note (with regard tp the video):_
+
+  1. GPS coordinates must be unqiue, otherwise there will be a conflict.
+  2. Events must be altered by the organiser that created them, this prevents different organisers from overwriting each other on events that they aren't working on.
 
 _Reference List_:
 Adnan, Y., 2021. Authentication_API Program.cs source code [Source code]. Available at: https://github.com/YusraAdnan/Authentication_API/blob/master/Authentication_API/Program.cs [Accessed 18 October 2026].

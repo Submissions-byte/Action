@@ -45,7 +45,7 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0' # Adjust if using 6.0, 7.0, etc.
+          dotnet-version: '10.0' # Adjust if using 6.0, 7.0, etc.
 
       - name: Restore Dependencies
         working-directory: ./RaceDay
