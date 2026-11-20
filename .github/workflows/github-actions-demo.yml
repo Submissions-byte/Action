@@ -57,4 +57,4 @@ jobs:
 
       - name: Run Unit Tests
         working-directory: ./RaceDay
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test --no-build --configuration Release --verbosity detailed
